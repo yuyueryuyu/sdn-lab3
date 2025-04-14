@@ -10,7 +10,7 @@ from os_ken.lib import hub
 from os_ken.topology.api import get_all_host, get_all_link, get_all_switch
 
 
-class NetworkAwareness(app_manager.RyuApp):
+class NetworkAwareness(app_manager.OSKenApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
 
     def __init__(self, *args, **kwargs):

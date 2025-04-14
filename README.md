@@ -195,7 +195,7 @@ uv run osken-manager least_hops.py --observe-links
 
 ## 必做题：最小时延路径
 
-跳数最少的路由不一定是最快的路由，链路时延也会对路由的快慢产生重要影响。请实时地（周期地）利用`LLDP`和`Echo`数据包测量各链路的时延，在网络拓扑的基础上构建一个有权图，然后基于此图计算最小时延路径。具体任务是，找出一条从`SDC` 到`MIT`时延最短的路径，输出经过的路线及总的时延，利用`Ping`包的`RTT`验证你的结果。
+跳数最少的路由不一定是最快的路由，链路时延也会对路由的快慢产生重要影响。请实时地（周期地）利用`LLDP`和`Echo`数据包测量各链路的时延，在网络拓扑的基础上构建一个有权图，然后基于此图计算最小时延路径。具体任务是，找出一条从`SDC` 到`MIT`时延最短的路径，输出经过的路线及总的时延，利用`Ping`包的`RTT`验证你的结果。请在`least_hops.py`的代码框架上，在新的文件下**新建**一个控制器（可以命名为`ShortestForward`或类似的名字），并完成任务。
 
 ### 测量原理：链路时延
 
@@ -230,7 +230,7 @@ uv run osken-manager least_hops.py --observe-links
           self.delay = 0
 ```
 
-2. `.venv/lib/python3.13/site-packages/os_ken/topology/switches/lldp_packet_in_handler()`
+2. `.venv/lib/python3.13/site-packages/os_ken/topology/switches`的`Switches/lldp_packet_in_handler()`
 
 `lldp_packet_in_handler()`处理接收到的`LLDP`包，在这里用收到`LLDP`报文的时间戳减去发送时的时间戳即为`lldp_delay`，由于`LLDP`报文被设计为经一跳后转给控制器，我们可将`lldp_delay`存入发送`LLDP`包对应的交换机端口
 
